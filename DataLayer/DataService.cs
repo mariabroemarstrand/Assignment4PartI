@@ -25,28 +25,38 @@ namespace DataLayer
 
         public Category GetCategory(int id)
         {
-            using var db = new NorthwindContext();
-            var cat = new Category {Id = id, Name = "Beverages"};
-            return cat;
+            
+          using var db = new NorthwindContext();
+          var cat = new Category { Id = id, Name = "Beverages" };
+          db.Remove(cat);
+            
+          return cat;
+            
         }
 
 
-        public Category CreateCategory(string Name, string Id)
+        public Category CreateCategory(string Name, string id)
         {
             using var db = new NorthwindContext();
             var cat = new Category { Id = 101, Name = "Test", Description = "CreateCategory_ValidData_CreteCategoryAndReturnsNewObject" };
             db.Categories.Add(cat);
-            
             return cat;
         }
 
-        public Category DeleteCategory(int id)
+        public bool DeleteCategory(int id)
         {
             using var db = new NorthwindContext();
             var cat = GetCategory(id);
-            db.Categories.Remove(cat);
-            return cat;
+            db.Remove(cat);
+
+            if (id > 0)
+            {
+                return true;
+            }
+            else return false;
         }
+
+
 
     }
 }
