@@ -44,7 +44,7 @@ namespace Assignment4.Tests
             Assert.Equal("CreateCategory_ValidData_CreteCategoryAndReturnsNewObject", category.Description);
 
             // cleanup
-            //service.DeleteCategory(category.Id);
+            service.DeleteCategory(category.Id);
         }
 #if COMMENT
         [Fact]

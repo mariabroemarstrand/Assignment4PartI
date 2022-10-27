@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using DataLayer.Model;
 using System.ComponentModel;
+using System.Security.Cryptography.X509Certificates;
 
 namespace DataLayer
 {
@@ -35,6 +36,15 @@ namespace DataLayer
             using var db = new NorthwindContext();
             var cat = new Category { Id = 101, Name = "Test", Description = "CreateCategory_ValidData_CreteCategoryAndReturnsNewObject" };
             db.Categories.Add(cat);
+            
+            return cat;
+        }
+
+        public Category DeleteCategory(int id)
+        {
+            using var db = new NorthwindContext();
+            var cat = GetCategory(id);
+            db.Categories.Remove(cat);
             return cat;
         }
 
