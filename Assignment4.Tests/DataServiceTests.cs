@@ -1,5 +1,6 @@
 using DataLayer;
 using DataLayer.Model;
+using System.Xml.Linq;
 
 namespace Assignment4.Tests
 {
@@ -24,7 +25,7 @@ namespace Assignment4.Tests
             Assert.Equal(8, categories.Count);
             Assert.Equal("Beverages", categories.First().Name);
         }
-#if COMMENT
+
         [Fact]
         public void GetCategory_ValidId_ReturnsCategoryObject()
         {
@@ -38,14 +39,14 @@ namespace Assignment4.Tests
         {
             var service = new DataService();
             var category = service.CreateCategory("Test", "CreateCategory_ValidData_CreteCategoryAndReturnsNewObject");
-            Assert.True(category.Id > 0);
+            Assert.True(category.Id > 0); 
             Assert.Equal("Test", category.Name);
             Assert.Equal("CreateCategory_ValidData_CreteCategoryAndReturnsNewObject", category.Description);
 
             // cleanup
-            service.DeleteCategory(category.Id);
+            //service.DeleteCategory(category.Id);
         }
-
+#if COMMENT
         [Fact]
         public void DeleteCategory_ValidId_RemoveTheCategory()
         {
