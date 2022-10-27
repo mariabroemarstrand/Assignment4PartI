@@ -24,7 +24,7 @@ namespace Assignment4.Tests
             Assert.Equal(8, categories.Count);
             Assert.Equal("Beverages", categories.First().Name);
         }
-
+#if COMMENT
         [Fact]
         public void GetCategory_ValidId_ReturnsCategoryObject()
         {
@@ -32,7 +32,7 @@ namespace Assignment4.Tests
             var category = service.GetCategory(1);
             Assert.Equal("Beverages", category.Name);
         }
-#if COMMENT
+
         [Fact]
         public void CreateCategory_ValidData_CreteCategoryAndReturnsNewObject()
         {
