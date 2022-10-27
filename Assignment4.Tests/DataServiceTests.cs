@@ -1,11 +1,12 @@
 using DataLayer;
+using DataLayer.Model;
 
 namespace Assignment4.Tests
 {
     public class DataServiceTests
     {
         /* Categories */
-#if COMMENT
+
         [Fact]
         public void Category_Object_HasIdNameDescription()
         {
@@ -31,7 +32,7 @@ namespace Assignment4.Tests
             var category = service.GetCategory(1);
             Assert.Equal("Beverages", category.Name);
         }
-
+#if COMMENT
         [Fact]
         public void CreateCategory_ValidData_CreteCategoryAndReturnsNewObject()
         {
