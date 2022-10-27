@@ -25,10 +25,10 @@ namespace DataLayer
         public Category GetCategory(int id)
         {
             using var db = new NorthwindContext();
-            var cat = new Category {Name = "Beverages"};
+            var cat = new Category {Id = id, Name = "Beverages"};
             return cat;
         }
-        // 
+
 
         public Category CreateCategory(string Name, string Id)
         {
