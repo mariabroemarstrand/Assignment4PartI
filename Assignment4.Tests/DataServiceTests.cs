@@ -15,6 +15,7 @@ namespace Assignment4.Tests
             Assert.Equal(0, category.Id);
             Assert.Null(category.Name);
             Assert.Null(category.Description);
+            //test
         }
 
         [Fact]
