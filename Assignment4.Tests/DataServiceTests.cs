@@ -96,9 +96,9 @@ namespace Assignment4.Tests
             Assert.False(result);
         }
 
-
-        /* products */
 #if COMMENT
+        /* products */
+
         [Fact]
         public void Product_Object_HasIdNameUnitPriceQuantityPerUnitAndUnitsInStock()
         {
@@ -108,7 +108,7 @@ namespace Assignment4.Tests
             Assert.Equal(0.0, product.UnitPrice);
             Assert.Null(product.QuantityPerUnit);
             Assert.Equal(0, product.UnitsInStock);
-        }
+     }
 
         [Fact]
         public void GetProduct_ValidId_ReturnsProductWithCategory()
@@ -139,7 +139,7 @@ namespace Assignment4.Tests
             Assert.Equal("NuNuCa Nuﬂ-Nougat-Creme", products.First().ProductName);
             Assert.Equal("Flotemysost", products.Last().ProductName);
         }
-
+#endif
         /* orders */
         [Fact]
         public void Order_Object_HasIdDatesAndOrderDetails()
@@ -153,6 +153,7 @@ namespace Assignment4.Tests
             Assert.Null(order.ShipCity);
         }
 
+#if COMMENT
 
         [Fact]
         public void GetOrder_ValidId_ReturnsCompleteOrder()
