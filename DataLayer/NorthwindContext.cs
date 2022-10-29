@@ -9,6 +9,7 @@ namespace DataLayer
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -36,9 +37,11 @@ namespace DataLayer
             modelBuilder.Entity<Order>().Property(x => x.Id).HasColumnName("orderid");
             modelBuilder.Entity<Order>().Property(x => x.Date).HasColumnName("orderdate");
             modelBuilder.Entity<Order>().Property(x => x.ShipCity).HasColumnName("shipcity");
-            modelBuilder.Entity<Order>().Property(x => x.OrderDetails).HasColumnName("ordername");
             modelBuilder.Entity<Order>().Property(x => x.ShipName).HasColumnName("shipname");
             modelBuilder.Entity<Order>().Property(x => x.Required).HasColumnName("requireddate");
+
+            modelBuilder.Entity<Order>().ToTable("orderdetails");
+
         }
     }
 }

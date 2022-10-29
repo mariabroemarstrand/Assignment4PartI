@@ -47,7 +47,7 @@ namespace DataLayer
         public bool DeleteCategory(int id)
         {
             using var db = new NorthwindContext();
-            var cat = db.Categories.Find(id);
+            var cat = GetCategory(id);
             if (cat != null)
             {
                 db.Categories.Remove(cat);
@@ -61,17 +61,25 @@ namespace DataLayer
         public bool UpdateCategory(int id, string name, string desc)
         {
             using var db = new NorthwindContext();
-            var cat = GetCategory(id);
-            if (id >0)
+            var cat = db.Categories.Find(id);
+   
+            if (cat != null)
             {
+                cat.Description = desc;
+                cat.Name = name;
+                db.SaveChanges();
                 return true;
-                db.Update(cat.Description=desc);
-                db.Update(cat.Name = name);
             }
 
             return false;
 
         }
+
+        //public Order GetOrder(int id)
+        //{
+        //    using var db = new NorthwindContext();
+        //    return db.Orders.Find(id);
+        //}
 
 
     }
