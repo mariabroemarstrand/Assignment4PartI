@@ -1,6 +1,8 @@
 using DataLayer;
 using DataLayer.Model;
+using StackExchange.Redis;
 using System.Xml.Linq;
+using Order = DataLayer.Model.Order;
 
 namespace Assignment4.Tests
 {
@@ -94,9 +96,9 @@ namespace Assignment4.Tests
             Assert.False(result);
         }
 
-#if COMMENT
-        /* products */
 
+        /* products */
+#if COMMENT
         [Fact]
         public void Product_Object_HasIdNameUnitPriceQuantityPerUnitAndUnitsInStock()
         {
@@ -137,7 +139,7 @@ namespace Assignment4.Tests
             Assert.Equal("NuNuCa Nuﬂ-Nougat-Creme", products.First().ProductName);
             Assert.Equal("Flotemysost", products.Last().ProductName);
         }
-
+#endif
         /* orders */
         [Fact]
         public void Order_Object_HasIdDatesAndOrderDetails()
@@ -151,6 +153,7 @@ namespace Assignment4.Tests
             Assert.Null(order.ShipCity);
         }
 
+#if COMMENT
         [Fact]
         public void GetOrder_ValidId_ReturnsCompleteOrder()
         {

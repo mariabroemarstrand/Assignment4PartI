@@ -32,6 +32,13 @@ namespace DataLayer
             modelBuilder.Entity<Product>().Property(x => x.Name).HasColumnName("productname");
             modelBuilder.Entity<Product>().Property(x => x.CategoryId).HasColumnName("categoryid");
 
+            modelBuilder.Entity<Order>().ToTable("orders");
+            modelBuilder.Entity<Order>().Property(x => x.Id).HasColumnName("orderid");
+            modelBuilder.Entity<Order>().Property(x => x.Date).HasColumnName("orderdate");
+            modelBuilder.Entity<Order>().Property(x => x.ShipCity).HasColumnName("shipcity");
+            modelBuilder.Entity<Order>().Property(x => x.OrderDetails).HasColumnName("ordername");
+            modelBuilder.Entity<Order>().Property(x => x.ShipName).HasColumnName("shipname");
+            modelBuilder.Entity<Order>().Property(x => x.Required).HasColumnName("requireddate");
         }
     }
 }
