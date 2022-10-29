@@ -55,20 +55,22 @@ namespace DataLayer
                 return true;
             }
             else return false;
-
-           
+  
         }
 
-        public bool UpdateCategory(int id, string name, string description)
+        public bool UpdateCategory(int id, string name, string desc)
         {
             using var db = new NorthwindContext();
             var cat = GetCategory(id);
-            
-            db.Update(cat.Id=id);
-            db.Update(cat.Name=name);
-            db.Update(cat.Description=description);
- 
-            return true;
+            if (id >0)
+            {
+                return true;
+                db.Update(cat.Description=desc);
+                db.Update(cat.Name = name);
+            }
+
+            return false;
+
         }
 
 
