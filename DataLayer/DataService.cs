@@ -75,11 +75,39 @@ namespace DataLayer
 
         }
 
-        //public Order GetOrder(int id)
-        //{
-        //    using var db = new NorthwindContext();
-        //    return db.Orders.Find(id);
-        //}
+        public Product? GetProduct(int id)
+        {
+            using var db = new NorthwindContext();
+            return db.Products
+                .Include(x=>x.Category)
+                .FirstOrDefault(x => x.Id == id);
+        }
+        public IList<ProductModel> GetProductByCategory(int id)
+        {
+            using var db = new NorthwindContext();
+            return db.Products
+                .Include(x => x.Category)
+                .Where(x => x.Category.Id == id)
+                .Select(x=> new ProductModel
+                {
+                    Name = x.Name,
+                    UnitPrice = x.UnitPrice,
+                    CategoryName = x.Category.Name
+                })
+                .ToList();
+        }
+
+
+        public Order? GetOrder(int id)
+        {
+            using var db = new NorthwindContext();
+
+            return db.Orders
+                .Include(x=>x.OrderDetails)
+                .ThenInclude(x=>x.Product)
+                .ThenInclude(x=>x.Category)
+                .FirstOrDefault(x => x.Id == id);
+        }
 
 
     }

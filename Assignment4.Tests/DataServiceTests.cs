@@ -96,7 +96,7 @@ namespace Assignment4.Tests
             Assert.False(result);
         }
 
-#if COMMENT
+
         /* products */
 
         [Fact]
@@ -119,6 +119,7 @@ namespace Assignment4.Tests
             Assert.Equal("Beverages", product.Category?.Name);
         }
 
+
         [Fact]
         public void GetProductsByCategory_ValidId_ReturnsProductWithCategory()
         {
@@ -129,7 +130,7 @@ namespace Assignment4.Tests
             Assert.Equal("Beverages", products.First().CategoryName);
             Assert.Equal("Lakkalikööri", products.Last().Name);
         }
-
+#if COMMENT
         [Fact]
         public void GetProduct_NameSubString_ReturnsProductsThatMatchesTheSubString()
         {
@@ -153,7 +154,7 @@ namespace Assignment4.Tests
             Assert.Null(order.ShipCity);
         }
 
-#if COMMENT
+
 
         [Fact]
         public void GetOrder_ValidId_ReturnsCompleteOrder()
@@ -161,10 +162,10 @@ namespace Assignment4.Tests
             var service = new DataService();
             var order = service.GetOrder(10248);
             Assert.Equal(3, order.OrderDetails?.Count());
-           // Assert.Equal("Queso Cabrales", order.OrderDetails?.First().Product?.Name);
-           // Assert.Equal("Dairy Products", order.OrderDetails?.First().Product?.Category?.Name);
+            Assert.Equal("Queso Cabrales", order.OrderDetails?.First().Product?.Name);
+            Assert.Equal("Dairy Products", order.OrderDetails?.First().Product?.Category?.Name);
         }
-
+#if COMMENT
         [Fact]
         public void GetOrders()
         {
