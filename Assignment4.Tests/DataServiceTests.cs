@@ -199,7 +199,7 @@ namespace Assignment4.Tests
             Assert.Equal(14, orderDetails.First().UnitPrice);
             Assert.Equal(12, orderDetails.First().Quantity);
         }
-#if COMMENT
+
         [Fact]
         public void GetOrderDetailByProductId_ValidId_ReturnsOrderDateUnitPriceAndQuantity()
         {
@@ -210,6 +210,6 @@ namespace Assignment4.Tests
             Assert.Equal(14, orderDetails.First().UnitPrice);
             Assert.Equal(12, orderDetails.First().Quantity);
         }
-#endif
+
     }
 }

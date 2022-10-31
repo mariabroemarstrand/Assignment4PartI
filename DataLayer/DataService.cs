@@ -135,6 +135,23 @@ namespace DataLayer
                 .ToList();
         }
 
+        public IList<OrderDetailsModel> GetOrderDetailsByProductId(int id)
+        {
+            var db = new NorthwindContext();
+
+            return db.OrderDetails
+               .Include(x => x.Order)
+               .Where(x => x.ProductId == id)
+               .Select(x => new OrderDetailsModel
+               {
+                   Quantity = x.Quantity,
+                   UnitPrice = x.UnitPrice,
+                   Order = x.Order
+               }).OrderBy(x=>x.Order.Id)
+               .ToList();
+
+        }
+
 
     }
 }
