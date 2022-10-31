@@ -12,12 +12,15 @@ using DataLayer.Model;
 using System.ComponentModel;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Linq;
+using DataLayer;
+
 
 namespace DataLayer
 {
     public class DataService
     {
-        public IList<Category> GetCategories()
+         
+    public IList<Category> GetCategories()
         {
             using var db = new NorthwindContext();
 
@@ -107,6 +110,29 @@ namespace DataLayer
                 .ThenInclude(x=>x.Product)
                 .ThenInclude(x=>x.Category)
                 .FirstOrDefault(x => x.Id == id);
+        }
+
+       public IList<Order> GetOrders()
+        {
+            using var db = new NorthwindContext();
+            return db.Orders.ToList();
+        }
+
+
+
+        public IList<OrderDetailsModel> GetOrderDetailsByOrderId(int id)
+        {
+            using var db = new NorthwindContext();
+            return db.OrderDetails.Include(x => x.Product)
+                .Where(x => x.OrderId == id)
+                .Select(x => new OrderDetailsModel
+                {
+                    Quantity = x.Quantity,
+                    UnitPrice = x.UnitPrice,
+                    Product = x.Product
+
+                })
+                .ToList();
         }
 
 

@@ -165,7 +165,7 @@ namespace Assignment4.Tests
             Assert.Equal("Queso Cabrales", order.OrderDetails?.First().Product?.Name);
             Assert.Equal("Dairy Products", order.OrderDetails?.First().Product?.Category?.Name);
         }
-#if COMMENT
+
         [Fact]
         public void GetOrders()
         {
@@ -199,7 +199,7 @@ namespace Assignment4.Tests
             Assert.Equal(14, orderDetails.First().UnitPrice);
             Assert.Equal(12, orderDetails.First().Quantity);
         }
-
+#if COMMENT
         [Fact]
         public void GetOrderDetailByProductId_ValidId_ReturnsOrderDateUnitPriceAndQuantity()
         {
