@@ -11,5 +11,7 @@ namespace DataLayer.Model
         public string Name { get; set; }
         public string CategoryName { get; set; }
         public int UnitPrice { get; set; }
+
+        public string ProductName { get; set; }
     }
 }

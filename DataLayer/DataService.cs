@@ -100,6 +100,20 @@ namespace DataLayer
                 .ToList();
         }
 
+        public IList<ProductModel> GetProductByName(string name)
+        {
+            using var db = new NorthwindContext();
+            return db.Products
+                .Where(x => x.Name.Contains(name))
+                .Select(x => new ProductModel
+                {
+                    Name = x.Name,
+                    UnitPrice = x.UnitPrice,
+                    ProductName = x.Name
+                })
+                .ToList();
+        }
+
 
         public Order? GetOrder(int id)
         {
@@ -151,7 +165,6 @@ namespace DataLayer
                .ToList();
 
         }
-
 
     }
 }
